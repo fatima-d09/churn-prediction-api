@@ -1,0 +1,11 @@
+services:
+  - name: churn-api
+    type: web
+    env: python
+    region: oregon
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: DATABASE_URL
+        value: "postgresql://fatoumatadembele:@localhost:5432/customer_churn"
+    plan: free
